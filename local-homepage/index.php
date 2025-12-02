@@ -103,29 +103,6 @@ foreach ($files as $file) {
         </div>
     </div>
 
-    <?php if(isset($mariadbEnabled)): ?>
-    <div class="row">
-        <div class="col">
-            <div class="bg-white rounded box-shadow my-3 p-3 border">
-                <h2 class="text-center">MariaDB</h2>
-
-                <table class="table table-striped table-bordered">
-                    <tbody>
-                    <tr>
-                        <th class="w-50">DSN</th>
-                        <td class="w-50"><?php echo sprintf('mysql://%s:%s@%s:%s', $mariadbUser, $mariadbPassword, $mariadbHost, $mariadbPort); ?></td>
-                    </tr>
-                    <tr>
-                        <th class="w-50">Log</th>
-                        <td class="w-50"><?php echo $mariadbLogPath; ?></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <?php endif; ?>
-
     <div class="row">
         <div class="col">
             <div class="bg-white rounded box-shadow my-3 p-3 border">

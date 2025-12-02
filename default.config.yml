@@ -30,7 +30,6 @@ mas_installed_apps: []
 managed_services_as_user:
   - dnsmasq
   - mailpit
-  - "mariadb@{{ mariadb_version }}"
   - "postgresql@{{ postgresql_version }}"
   - php
 
@@ -266,17 +265,6 @@ nginx_certificates:
 
 dnsmasq_domains:
   - localhost
-
-#############
-# MariaDB   #
-#############
-
-mariadb_version: 10.6
-mariadb_dev_user: dev
-mariadb_dev_password: dev
-
-# dont change after bootstrap
-mariadb_root_password: ohvaiN2azoof0feeDi2
 
 ################
 # PostgreSQL   #

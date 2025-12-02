@@ -39,8 +39,6 @@
       tags: dotfiles
     - role: dnsmasq
       tags: dnsmasq
-    - role: mariadb
-      tags: mariadb
     - role: postgresql
       tags: postgresql
     - role: php
