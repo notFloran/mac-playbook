@@ -6,17 +6,16 @@ command="$1"
 php_version=$(php -r "\$v=explode('.', phpversion() ); echo implode('.', array_splice(\$v, 0, -1));")
 
 xdebug_conf_path="$(brew --prefix)/etc/php/$php_version/conf.d"
-xdebug_conf_file="ext-xdebug.ini"
+xdebug_conf_file="20-xdebug.ini"
 xdebug_conf=$xdebug_conf_path/$xdebug_conf_file
 
 phpPackage="shivammathur/php/php@$php_version"
-pecl info xdebug 2> /dev/null > /dev/null
+brew info shivammathur/extensions/xdebug@$php_version | grep "Installed" > /dev/null
 
 if [ $? -eq 0 ]; then
     if [ ! -f "$xdebug_conf" ] && [ ! -f "$xdebug_conf.disabled" ]; then
         echo ""
         echo "The ini file for Xdebug was not found at '$xdebug_conf_path'"
-        echo "Did you install Xdebug via Homebrew?"
         echo ""
 
         exit 1
@@ -56,7 +55,7 @@ if [ $? -eq 0 ]; then
     fi
 else
     echo ""
-    echo "Xdebug for PHP $php_version was never installed or not installed via Brew."
+    echo "Xdebug for PHP $php_version not found."
     echo ""
     exit 1
 fi

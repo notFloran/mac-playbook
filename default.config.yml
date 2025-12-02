@@ -127,11 +127,11 @@ git_sequence_editor: ~
 # PHP   #
 #########
 
-php_default_version:  8.4
+php_default_version:  8.5
 
 php_versions:
-  - 8.3
   - 8.4
+  - 8.5
 
 php_all_versions:
   - 5.6
@@ -145,26 +145,13 @@ php_all_versions:
   - 8.2
   - 8.3
   - 8.4
-
-install_xdebug: true
-
-# See https://bugs.xdebug.org/view.php?id=2167
-disable_xdebug_install_for_versions:
-  - 7.4
-  - 8.0
+  - 8.5
 
 # PECL
 php_extensions:
   - igbinary
   - imagick
-
-# See https://github.com/Imagick/imagick/issues/689, need to wait a new release of imagick
-php_84_extensions:
-  - igbinary
-
-# packages needed to build extensions
-php_extensions_dependencies:
-  - libiconv
+  - xdebug
 
 php_fpm_memory_limit: 512M
 php_custom_config:
@@ -207,27 +194,21 @@ php_custom_config:
   - section: "xdebug"
     option: "xdebug.client_port"
     value: "9003"
-    when: install_xdebug
   - section: "xdebug"
     option: "xdebug.mode"
     value: 'debug'
-    when: install_xdebug
   - section: "xdebug"
     option: "xdebug.output_dir"
     value: "{{ '~/dev/xdebug' | expanduser }}"
-    when: install_xdebug
   - section: "xdebug"
     option: "xdebug.idekey"
     value: "mac-playbook"
-    when: install_xdebug
   - section: "xdebug"
     option: "xdebug.file_link_format"
     value: "'phpstorm://open?file=%f&line=%l'"
-    when: install_xdebug
   - section: "xdebug"
     option: "xdebug.log"
     value: "{{ brew_prefix }}/var/log/xdebug_remote.log"
-    when: install_xdebug
 
 composer_global_packages: []
 

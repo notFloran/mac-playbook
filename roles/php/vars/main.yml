@@ -3,4 +3,6 @@ php_custom_config_file: "{{ brew_prefix }}/etc/php/{{ php_current_version }}/con
 
 xdebug_package: "xdebug"
 
-php_homebrew_tap: "shivammathur/php"
+php_homebrew_tap: 
+  - "shivammathur/php"
+  - "shivammathur/extensions"

@@ -1,5 +1,5 @@
 ---
-- name: Tap shivammathur/php homebrew repository
+- name: Add tap(s)
   homebrew_tap:
     tap: "{{ php_homebrew_tap }}"
     state: present
@@ -9,11 +9,6 @@
     name: "shivammathur/php/php@{{ item }}"
     state: absent
   with_items: "{{ php_all_versions | difference(php_versions) }}"
-
-- name: Install extensions dependencies
-  homebrew:
-    name: "{{ php_extensions_dependencies|default([]) }}"
-    state: "{{ homebrew_package_state }}"
 
 - name: Install PHP
   include_tasks: install_php.yml
