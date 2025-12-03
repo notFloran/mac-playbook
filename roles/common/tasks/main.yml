@@ -22,7 +22,8 @@
   loop: "{{ homebrew_cask_packages }}"
   ignore_errors: true
 
-# - name: Ensure configured MAS apps are installed
-#   community.general.mas:
-#     id: "{{ mas_installed_apps }}"
-#     state: "{{ mas_package_state }}"
+- name: Ensure configured MAS apps are installed
+  community.general.mas:
+    id: "{{ mas_installed_apps }}"
+    state: "{{ mas_package_state }}"
+  ignore_errors: true
