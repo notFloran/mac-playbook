@@ -1,4 +1,3 @@
 ---
 
-composer2_path: "{{ brew_prefix }}/bin/composer"
-composer1_path: "{{ brew_prefix }}/bin/composer1"
+composer_path: "{{ brew_prefix }}/bin/composer"
