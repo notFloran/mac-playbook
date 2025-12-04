@@ -45,8 +45,6 @@
       tags: php
     - role: composer
       tags: composer
-    - role: symfony_cli
-      tags: symfony_cli
     - role: nodejs
       tags: nodejs
     - role: nginx
