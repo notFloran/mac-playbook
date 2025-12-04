@@ -66,11 +66,11 @@ zsh_plugins:
 
 zsh_custom_plugins:
   - name: symfony
-    url: https://github.com/Akollade/symfony.plugin.zsh.git
+    url: https://github.com/Dalokae/symfony.plugin.zsh.git
   - name: zsh-syntax-highlighting
     url: https://github.com/zsh-users/zsh-syntax-highlighting.git
   - name: php-version-switcher
-    url: https://github.com/Akollade/php-version-switcher.plugin.zsh
+    url: https://github.com/Dalokae/php-version-switcher.plugin.zsh
 
 zsh_aliases:
   - ll='ls -lh'
