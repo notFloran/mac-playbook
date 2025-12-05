@@ -1,2 +1,0 @@
----
-mailpit_plist_file: "{{ brew_prefix }}/opt/mailpit/homebrew.mxcl.mailpit.plist"
