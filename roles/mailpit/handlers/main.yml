@@ -1,3 +1,0 @@
----
-- name: Restart mailpit
-  command: brew services restart mailpit

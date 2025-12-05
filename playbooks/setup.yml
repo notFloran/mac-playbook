@@ -39,18 +39,12 @@
       tags: dotfiles
     - role: dnsmasq
       tags: dnsmasq
-    - role: postgresql
-      tags: postgresql
     - role: php
       tags: php
     - role: composer
       tags: composer
     - role: nodejs
       tags: nodejs
-    - role: nginx
-      tags: nginx
-    - role: mailpit
-      tags: mailpit
     - role: logrotate
       tags: logrotate
     - upgrade

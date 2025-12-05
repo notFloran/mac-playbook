@@ -1,7 +1,5 @@
 # Mac Ansible Playbook
 
-The Web server (nginx), PHP and the services (PostgreSQL, Mailpit) are installed locally with Ansible.
-
 All the management of the system (configuration, update, etc) goes through this tool which allows everyone to have a similar environment.
 
 ## Install
@@ -10,9 +8,9 @@ You must first clone the repository to setup the environment.
 
 ```shell
 $ xcode-select --install
-$ git clone https://github.com/Dalokae/mac-playbook.git ~/.mac-playbook
+$ git clone https://github.com/notFloran/mac-playbook.git ~/.mac-playbook
 # With SSH
-$ git clone git@github.com:Dalokae/mac-playbook.git ~/.mac-playbook
+$ git clone git@github.com:notFloran/mac-playbook.git ~/.mac-playbook
 ```
 
 Then you have to configure the environment:
@@ -53,17 +51,6 @@ zsh_theme: agnoster
 
 git_user_name: John Doe
 git_user_email: john@doe.fr
-
-###########
-# Nginx   #
-###########
-
-nginx_sites:
-  - name: wallabag
-    server_name: wallabag.localhost
-    type: symfony
-    root: "~/dev/wallabag/web"
-    php_version: '8.3'
 ```
 
 Homebrew is needed, see https://brew.sh/ to install it.
@@ -95,4 +82,4 @@ To list all commands just type `dev`.
 
 ## License
 
-[mac-playbook](https://github.com/Dalokae/mac-playbook) is licensed under the [MIT license](LICENSE).
+[mac-playbook](https://github.com/notFloran/mac-playbook) is licensed under the [MIT license](LICENSE).

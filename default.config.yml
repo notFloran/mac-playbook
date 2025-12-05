@@ -29,12 +29,9 @@ mas_installed_apps: []
 
 managed_services_as_user:
   - dnsmasq
-  - mailpit
-  - "postgresql@{{ postgresql_version }}"
   - php
 
-managed_services_as_root:
-  - nginx
+managed_services_as_root: []
 
 managed_plists: []
 
@@ -188,9 +185,6 @@ php_custom_config:
   - section: "Session"
     option: "session.gc_maxlifetime"
     value: 604800
-  - section: "mail function"
-    option: "sendmail_path"
-    value: "mailpit sendmail -t"
   - section: "xdebug"
     option: "xdebug.client_port"
     value: "9003"
@@ -218,60 +212,9 @@ composer_global_packages: []
 
 nodejs_version: 20
 
-###########
-# Nginx   #
-###########
-
-nginx_client_max_body_size: 5M
-nginx_php_max_execution_time: 120
-
-nginx_sites:
-  - name: example
-    server_name: example.localhost
-    nginx_type: symfony-flex
-    root: "~/dev/example/web"
-    redirect_to_https: true
-    https: true
-
-nginx_system_sites:
-  - "{{ mailpit_nginx_site }}"
-
-nginx_certificates:
-  - localhost
-  - 127.0.0.1
-
 #########
 # DNS   #
 #########
 
 dnsmasq_domains:
   - localhost
-
-################
-# PostgreSQL   #
-################
-
-postgresql_version: 15
-
-#############
-# Mailpit   #
-#############
-
-mailpit_ui_bind_addr: 0.0.0.0:8025
-mailpit_smtp_bind_addr: 0.0.0.0:1025
-
-mailpit_nginx_site:
-  name: mailpit
-  server_name: mailpit.localhost
-  type: custom
-  redirect_to_https: true
-  custom_config: |
-    location / {
-        proxy_pass http://{{ mailpit_ui_bind_addr }};
-        chunked_transfer_encoding on;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_http_version 1.1;
-        proxy_redirect off;
-        proxy_buffering off;
-    }
