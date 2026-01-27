@@ -50,3 +50,7 @@
 [sequence]
   editor = {{ git_sequence_editor }}
 {% endif %}
+{% for key, value in git_includes_if.items() %}
+[includeIf "gitdir:{{ key }}"]
+  path = {{ value }}
+{% endfor %}

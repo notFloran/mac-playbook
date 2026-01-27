@@ -92,6 +92,8 @@ ssh_config: ~
 git_user_name: X X
 git_user_email: x@exemple.fr
 
+git_includes_if: {}
+
 git_aliases:
   ci: commit
   st: status
