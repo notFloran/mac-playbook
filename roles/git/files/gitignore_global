@@ -26,3 +26,6 @@ Icon
 # Others
 /.rules
 i18nally.json
+
+# Claude
+.claude
