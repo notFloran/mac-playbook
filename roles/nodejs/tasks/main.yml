@@ -1,9 +1,16 @@
 ---
 
+- name: Get latest nvm version
+  ansible.builtin.shell: git ls-remote --tags --refs --sort=-v:refname {{ nodejs_nvm_repo }} 'v[0-9]*' | head -1 | cut -d/ -f3
+  register: nodejs_nvm_latest_version
+  changed_when: false
+  check_mode: false
+
 - name: Install nvm
-  ansible.builtin.shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash
-  args:
-    creates: "~/.nvm/nvm.sh"
+  ansible.builtin.git:
+    repo: "{{ nodejs_nvm_repo }}"
+    dest: ~/.nvm
+    version: "{{ nodejs_nvm_latest_version.stdout }}"
 
 - name: Deploy .load_node
   template:

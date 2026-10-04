@@ -1,0 +1,3 @@
+---
+# Only catch what breaks at runtime (syntax, unresolvable modules, removed features), not style
+profile: min
