@@ -16,7 +16,6 @@
     - include_vars: "{{ item }}"
       with_fileglob:
         - ../config.yml
-        - ../config_php.yml
       tags: always
     - name: set facts
       set_fact:
@@ -37,16 +36,8 @@
       tags: dotfiles
     - role: dotfiles
       tags: dotfiles
-    - role: dnsmasq
-      tags: dnsmasq
-    - role: php
-      tags: php
-    - role: composer
-      tags: composer
     - role: nodejs
       tags: nodejs
-    - role: logrotate
-      tags: logrotate
     - upgrade
     - role: cleanup
       tags: cleanup

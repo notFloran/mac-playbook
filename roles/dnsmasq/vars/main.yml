@@ -1,3 +1,0 @@
----
-dnsmasq_conf_path: "{{ brew_prefix }}/etc/dnsmasq.conf"
-delete_old_resolvers: true

@@ -8,10 +8,6 @@ DEFAULT_USER="{{ lookup('env','USER') }}"
 # automatically updates Oh My Zsh when a new version is available, without asking for confirmation
 zstyle ':omz:update' mode auto
 
-{% if 'php-version-switcher' in zsh_plugins %}
-PHP_PATH_TEMPLATE="{{ brew_prefix }}/opt/php@__PHP_VERSION__/bin"
-{% endif %}
-
 plugins=({{ zsh_plugins | join(' ') }})
 
 source $ZSH/oh-my-zsh.sh

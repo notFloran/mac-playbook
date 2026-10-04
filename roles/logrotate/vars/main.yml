@@ -1,3 +1,0 @@
----
-
-logrotate_config_directory: "{{ brew_prefix }}/etc/logrotate.d"

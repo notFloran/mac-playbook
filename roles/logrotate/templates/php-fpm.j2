@@ -1,9 +1,0 @@
-{{ ansible_managed | comment }}
-
-{{ brew_prefix }}/var/log/php-fpm.log {
-    daily
-    rotate 7
-    compress
-    missingok
-    notifempty
-}

@@ -1,3 +1,0 @@
----
-
-composer_path: "{{ brew_prefix }}/bin/composer"

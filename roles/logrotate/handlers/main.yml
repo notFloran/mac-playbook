@@ -1,4 +1,0 @@
----
-
-- name: Restart logrotate
-  command: brew services restart logrotate

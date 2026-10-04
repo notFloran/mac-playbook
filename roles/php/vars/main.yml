@@ -1,8 +1,0 @@
----
-php_custom_config_file: "{{ brew_prefix }}/etc/php/{{ php_current_version }}/conf.d/custom.ini"
-
-xdebug_package: "xdebug"
-
-php_homebrew_tap: 
-  - "shivammathur/php"
-  - "shivammathur/extensions"
