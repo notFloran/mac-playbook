@@ -20,23 +20,14 @@ export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:{{ brew_prefix }}/opt/libffi/lib/pkgc
 # OpenSSL
 export PATH="{{ lookup('pipe', 'brew --prefix openssl') }}/bin:$PATH"
 
-# PHP
-[ -e "${HOME}/.load_php" ] && source "${HOME}/.load_php"
-
 # node.js
 [ -e "${HOME}/.load_node" ] && source "${HOME}/.load_node"
-
-# RUBY
-export PATH="{{ brew_prefix }}/opt/ruby@2.7/bin:$PATH"
 
 # Python
 export PATH="{{ brew_prefix }}/opt/python@3/libexec/bin:$PATH"
 
 # Add user bin
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
-
-# composer binaries
-export PATH=~/.composer/vendor/bin:./vendor/bin:$PATH
 
 # Pipx
 export PIPX_HOME=$HOME/.local/pipx

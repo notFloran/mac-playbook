@@ -4,7 +4,6 @@ ANSIBLE_COMMAND := $(if $(shell grep "sudo_password: !vault" config.yml),$(ANSIB
 CONFIG_EDITOR = $(or $(DEV_CONFIG_EDITOR) , vim)
 
 ANSIBLE_PLAYBOOK_SETUP=$(ANSIBLE_COMMAND) playbooks/setup.yml
-ANSIBLE_PLAYBOOK_MANAGE_SERVICES=$(ANSIBLE_COMMAND) playbooks/manage_services.yml
 tags = all
 
 .DEFAULT_GOAL := help
@@ -45,10 +44,6 @@ upgrade: ## Upgrade of the apps and dev environment
 	@echo ""
 	@$(ANSIBLE_PLAYBOOK_SETUP) --extra-vars='upgrade_all_packages=true' --tags=$(tags)
 
-.PHONY: setup-mkcert
-setup-mkcert: ## Setup mkcert
-	@mkcert -install
-
 .PHONY: dotfiles
 dotfiles: ## Setup "dotfiles"
 	@$(ANSIBLE_PLAYBOOK_SETUP) --tags="dotfiles"
@@ -60,27 +55,3 @@ config: ## Edit config
 .PHONY: update
 update: ## Pull the last version of the dev environment
 	@git pull origin main
-
-.PHONY: stop
-stop: ## Stop all services
-	@$(ANSIBLE_PLAYBOOK_MANAGE_SERVICES) --extra-vars='service_state=stop'
-
-.PHONY: start
-start: ## Start all services
-	@$(ANSIBLE_PLAYBOOK_MANAGE_SERVICES) --extra-vars='service_state=start'
-
-.PHONY: restart
-restart: ## Restart all services
-	@$(ANSIBLE_PLAYBOOK_MANAGE_SERVICES) --extra-vars='service_state=restart'
-
-.PHONY: status
-status: ## List all services
-	@brew services list
-
-.PHONY: xdebug-on
-xdebug-on: ## Enable XDebug
-	@scripts/xdebug.sh on
-
-.PHONY: xdebug-off
-xdebug-off: ## Disable XDebug
-	@scripts/xdebug.sh off

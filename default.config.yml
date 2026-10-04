@@ -26,14 +26,6 @@ mas_installed_apps: []
 # Example:
 #  - 904280696 # Things 3
 
-managed_services_as_user:
-  - dnsmasq
-  - php
-
-managed_services_as_root: []
-
-managed_plists: []
-
 ############
 # homebrew #
 ############
@@ -48,23 +40,16 @@ zsh_theme: ys
 
 zsh_plugins:
   - brew
-  - composer
   - extract
   - git
   - history-substring-search
   - httpie
-  - php-version-switcher
   - sudo
-  - symfony
   - zsh-syntax-highlighting
 
 zsh_custom_plugins:
-  - name: symfony
-    url: https://github.com/Dalokae/symfony.plugin.zsh.git
   - name: zsh-syntax-highlighting
     url: https://github.com/zsh-users/zsh-syntax-highlighting.git
-  - name: php-version-switcher
-    url: https://github.com/Dalokae/php-version-switcher.plugin.zsh
 
 zsh_aliases:
   - ll='ls -lh'
@@ -119,101 +104,8 @@ git_gpg_format: ssh
 
 git_sequence_editor: ~
 
-#########
-# PHP   #
-#########
-
-php_default_version: 8.5
-
-php_versions:
-  - 8.4
-  - 8.5
-
-php_all_versions:
-  - 5.6
-  - 7.0
-  - 7.1
-  - 7.2
-  - 7.3
-  - 7.4
-  - 8.0
-  - 8.1
-  - 8.2
-  - 8.3
-  - 8.4
-  - 8.5
-
-# PECL
-php_extensions:
-  - igbinary
-  - imagick
-  - xdebug
-
-php_fpm_memory_limit: 512M
-php_custom_config:
-  - section: "PHP"
-    option: "max_execution_time"
-    value: 120
-  - section: "PHP"
-    option: "max_input_vars"
-    value: 3000
-  - section: "PHP"
-    option: "display_errors"
-    value: 1
-  - section: "PHP"
-    option: "error_reporting"
-    value: "E_ALL & ~E_DEPRECATED & ~E_STRICT"
-  - section: "PHP"
-    option: "error_log"
-    value: "{{ brew_prefix }}/var/log/php_errors.log"
-  - section: "PHP"
-    option: "memory_limit"
-    value: -1
-  - section: "PHP"
-    option: "upload_max_filesize"
-    value: "20M"
-  - section: "PHP"
-    option: "post_max_size"
-    value: "20M"
-  - section: "Date"
-    option: "date.timezone"
-    value: "Europe/Paris"
-  - section: "Session"
-    option: "session.cookie_lifetime"
-    value: 604800
-  - section: "Session"
-    option: "session.gc_maxlifetime"
-    value: 604800
-  - section: "xdebug"
-    option: "xdebug.client_port"
-    value: "9003"
-  - section: "xdebug"
-    option: "xdebug.mode"
-    value: "debug"
-  - section: "xdebug"
-    option: "xdebug.output_dir"
-    value: "{{ '~/dev/xdebug' | expanduser }}"
-  - section: "xdebug"
-    option: "xdebug.idekey"
-    value: "mac-playbook"
-  - section: "xdebug"
-    option: "xdebug.file_link_format"
-    value: "'phpstorm://open?file=%f&line=%l'"
-  - section: "xdebug"
-    option: "xdebug.log"
-    value: "{{ brew_prefix }}/var/log/xdebug_remote.log"
-
-composer_global_packages: []
-
 ############
 # Node.js  #
 ############
 
 nodejs_version: 20
-
-#########
-# DNS   #
-#########
-
-dnsmasq_domains:
-  - localhost
