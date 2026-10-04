@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Every Monday, to catch breaking changes in new Ansible releases
+    - cron: "0 6 * * 1"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.x"
+
+      - name: Install Ansible
+        run: pip install ansible ansible-lint
+
+      - name: Syntax check
+        run: ansible-playbook -i inventory playbooks/setup.yml --syntax-check
+
+      - name: Lint
+        run: ansible-lint playbooks/setup.yml
