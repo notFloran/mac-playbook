@@ -14,9 +14,6 @@ eval "$({{ brew_prefix }}/bin/brew shellenv)"
 # gpg and password prompt
 export GPG_TTY=$(tty)
 
-# need by vips
-export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:{{ brew_prefix }}/opt/libffi/lib/pkgconfig"
-
 # OpenSSL
 export PATH="{{ lookup('pipe', 'brew --prefix openssl') }}/bin:$PATH"
 

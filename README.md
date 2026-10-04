@@ -1,19 +1,27 @@
 # Mac Ansible Playbook
 
-All the management of the system (configuration, update, etc) goes through this tool which allows everyone to have a similar environment.
+An Ansible playbook to set up and maintain my Mac: Homebrew packages, casks and Mac App Store apps, zsh and git configuration, SSH config and Node.js.
+
+## What it manages
+
+- **Packages**: Homebrew formulae, casks and Mac App Store apps
+- **Shell**: oh-my-zsh, plugins, aliases, `~/.zprofile` and `~/.zshrc`
+- **Git**: `~/.gitconfig`, global gitignore, commit template, aliases, commit signing
+- **SSH**: `~/.ssh/config`
+- **Node.js**: nvm and a default Node.js version
 
 ## Install
 
-You must first clone the repository to setup the environment.
+Homebrew is needed, see https://brew.sh/ to install it.
+
+Clone the repository:
 
 ```shell
 $ xcode-select --install
-$ git clone https://github.com/notFloran/mac-playbook.git ~/.mac-playbook
-# With SSH
 $ git clone git@github.com:notFloran/mac-playbook.git ~/.mac-playbook
 ```
 
-Then you have to configure the environment:
+Create your configuration:
 
 ```shell
 $ cd ~/.mac-playbook
@@ -21,41 +29,30 @@ $ touch config.yml
 $ vim config.yml
 ```
 
-You can look in the file `default.config.yml` to customize your environment.
-
-Example :
+`config.yml` overrides the values of `default.config.yml`. Example:
 
 ```yaml
 ---
-############
-# SYSTEM   #
-############
-
 edit_dev_config_with: code
 
 homebrew_cask_packages:
-  - tableplus
   - iterm2
-  - alfred
-  - code
+  - visual-studio-code
 
-############
-# dotfiles #
-############
+homebrew_packages:
+  - jq
+  - gh
+
+mas_installed_apps:
+  - 937984704 # Amphetamine
 
 zsh_theme: agnoster
-
-#########
-# GIT   #
-#########
 
 git_user_name: John Doe
 git_user_email: john@doe.fr
 ```
 
-Homebrew is needed, see https://brew.sh/ to install it.
-
-Then :
+Then bootstrap the machine:
 
 ```shell
 # Edit your bashrc or zshrc to include "export PIPX_HOME=$HOME/.local/pipx"
@@ -63,21 +60,28 @@ Then :
 $ make bootstrap
 ```
 
-And to finish : reboot the computer.
+And to finish: reboot the computer.
 
-From there, you can use the **dev** binary to manage the environment.
+## Usage
 
-## Save password
+Once bootstrapped, the `dev` binary runs the Makefile targets from anywhere. Type `dev` to list them.
 
-To avoid having to enter the SUDO password all the time we will encrypt our SUDO password with a password that will be stored in the keychain :
+| Command | Description |
+| --- | --- |
+| `dev setup` | Apply the whole playbook |
+| `dev setup tags=dotfiles` | Apply only some tags (`dev tags` lists them) |
+| `dev dotfiles` | Apply only the shell, git and SSH configuration |
+| `dev upgrade` | Upgrade casks and Homebrew packages, then apply the playbook |
+| `dev config` | Edit `config.yml` |
+| `dev update` | Pull the last version of the playbook |
+
+## Save the sudo password
+
+To avoid typing the sudo password on every run, encrypt it with a vault password stored in the keychain:
 
 ```shell
 $ ./scripts/generate-ansible-password
 ```
-
-## Usages
-
-To list all commands just type `dev`.
 
 ## License
 
